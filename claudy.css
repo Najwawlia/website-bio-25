@@ -1,0 +1,650 @@
+/* ==========================================================
+   BioGizi - FINAL VERSION: Full Design + Refined Animations
+   File CSS Lengkap (claudy.css)
+   ========================================================== */
+
+/* 1. IMPOR FONT DARI GOOGLE FONTS (WAJIB ADA DI BARIS PERTAMA) */
+@import url('https://fonts.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap');
+
+/* 2. VARIABEL CSS */
+:root {
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+    --secondary: #ec4899;
+    --accent: #14b8a6;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --text-dark: #1e293b;
+    --text-gray: #64748b;
+    --text-light: #94a3b8;
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-card: #ffffff;
+    --bg-light: #f8fafc;
+    --border: #e2e8f0;
+    --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+
+    /* Variabel Transisi Halus */
+    --transition-subtle: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-card: all 0.35s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* === RESET & BASE === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* AKTIVASI SMOOTH SCROLL */
+html {
+    scroll-behavior: smooth; 
+}
+
+body {
+    /* FONT BARU: Inter untuk badan teks */
+    font-family: 'Inter', sans-serif; 
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-dark);
+    background: linear-gradient(to bottom, #f8fafc 0%, #e0e7ff 100%); 
+    min-height: 100vh;
+}
+
+/* === UTILITIES (CONTAINER) === */
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* === NAVBAR === */
+.navbar {
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(12px);
+    padding: 1.2rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 700;
+    /* Font Logo menggunakan Poppins */
+    font-family: 'Poppins', sans-serif; 
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-decoration: none;
+    letter-spacing: -0.5px;
+    transition: var(--transition-subtle);
+}
+
+.logo:hover {
+    /* HOVER HALUS */
+    transform: translateY(-1px);
+    filter: brightness(1.1);
+}
+
+.navbar nav ul {
+    display: flex;
+    gap: 0.8rem; 
+    list-style: none;
+}
+
+.navbar nav a {
+    color: #e2e8f0;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.7rem 1.2rem;
+    border-radius: 6px;
+    transition: var(--transition-subtle);
+    position: relative;
+    overflow: hidden;
+}
+
+.navbar nav a:hover {
+    background: rgba(255, 255, 255, 0.15); 
+    color: #ffffff;
+    /* MENGHILANGKAN TRANSFORM AGAR TIDAK MELOMPAT */
+    transform: none; 
+}
+
+/* GAYA UNTUK LINK YANG SEDANG AKTIF (Dipicu oleh main.js) */
+.navbar nav a.active-link {
+    background: rgba(99, 102, 241, 0.9); /* Menggunakan warna primary */
+    color: #ffffff;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(99, 102, 241, 0.4);
+}
+
+.navbar nav a.active-link::after {
+    /* Menghilangkan garis bawah pada tautan yang aktif */
+    transform: scaleX(0); 
+}
+
+
+/* Animasi Garis Bawah yang halus (Membesar dari tengah) */
+.navbar nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--gradient-1);
+    transform: scaleX(0); 
+    transform-origin: center; 
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.navbar nav a:hover::after {
+    transform: scaleX(1); 
+}
+
+/* === CONTENT SECTIONS === */
+.content-section {
+    padding: 5rem 0;
+    position: relative;
+}
+
+/* Mengembalikan background even V1 + efek blur */
+.content-section:nth-child(even) {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+/* === TYPOGRAPHY === */
+h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    /* FONT BARU: Poppins */
+    font-family: 'Poppins', sans-serif;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+    letter-spacing: -1.5px; 
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    /* FONT BARU: Poppins */
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+/* Garis bawah h2 yang lebih pendek sebagai aksen */
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40%;
+    height: 4px;
+    background: var(--gradient-2);
+    border-radius: 2px;
+}
+
+h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    /* FONT BARU: Poppins */
+    font-family: 'Poppins', sans-serif;
+    color: var(--primary-dark);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    /* FONT BARU: Poppins */
+    font-family: 'Poppins', sans-serif; 
+    color: var(--primary);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1.5rem;
+    color: var(--text-gray);
+    line-height: 1.8;
+    text-align: justify;
+}
+
+.intro-paragraph {
+    font-size: 1.2rem;
+    line-height: 1.9;
+    color: var(--text-gray);
+    background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 100%); 
+    padding: 2rem;
+    border-radius: 16px;
+    border-left: 5px solid var(--primary);
+    margin: 2.5rem 0;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+}
+
+/* === HERO IMAGE === */
+.hero-image-placeholder {
+    position: relative;
+    margin: 3rem auto;
+    max-width: 100%;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+}
+
+.hero-image-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    background: var(--gradient-1);
+    border-radius: 28px;
+    z-index: -1;
+    opacity: 0.15;
+}
+
+.hero-image-placeholder::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(102,126,234,0.1) 0%, rgba(118,75,162,0.1) 100%);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.hero-image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.hero-image-placeholder:hover img {
+    /* HOVER HALUS */
+    transform: scale(1.03); 
+}
+
+/* === TRIO CARDS === */
+.trio-column-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.trio-card {
+    background: var(--bg-card);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+    transition: var(--transition-card);
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.trio-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-1);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.trio-card:hover {
+    /* HOVER HALUS */
+    transform: translateY(-8px); 
+    box-shadow: 0 15px 45px rgba(99, 102, 241, 0.15); 
+    border-color: var(--primary);
+}
+
+.trio-card:hover::before {
+    transform: scaleX(1);
+}
+
+.trio-card .material-icons {
+    font-size: 3.5rem;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+    margin-bottom: 1.5rem;
+    transition: var(--transition-subtle);
+}
+
+.trio-card:hover .material-icons {
+    /* HOVER IKON HALUS */
+    transform: translateY(-2px); 
+}
+
+.trio-card:nth-child(2) .material-icons {
+    background: var(--gradient-2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.trio-card:nth-child(3) .material-icons {
+    background: var(--gradient-3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* === GS CARDS === */
+.gs-card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.gs-card.minimal {
+    background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+    padding: 2rem;
+    border-radius: 16px;
+    border-left: 5px solid var(--accent);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+    transition: var(--transition-card);
+    position: relative;
+    overflow: hidden;
+}
+
+.gs-card.minimal::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background: var(--gradient-4);
+    opacity: 0.05;
+    border-radius: 50%;
+    transform: translate(30%, -30%) scale(0.5); 
+    transition: all 0.5s ease;
+}
+
+.gs-card.minimal:hover {
+    /* HOVER HALUS */
+    transform: translateX(4px); 
+    box-shadow: 0 12px 40px rgba(20, 184, 166, 0.1);
+    border-left-color: var(--success);
+}
+
+.gs-card.minimal:hover::after {
+    transform: translate(30%, -30%) scale(1);
+}
+
+/* === LISTS === */
+ul, ol {
+    margin: 2.5rem 0;
+    padding-left: 2rem;
+}
+
+ul li, ol li {
+    margin-bottom: 1.2rem;
+    color: var(--text-gray);
+    line-height: 1.8;
+    padding-left: 0.5rem;
+}
+
+ul li::marker {
+    color: var(--primary);
+    font-size: 1.3em;
+}
+
+ol li::marker {
+    color: var(--secondary);
+    font-weight: 700;
+}
+
+/* === LIST: TABLE OF CONTENTS (Daftar Isi) Style === */
+/* Memperbaiki tampilan daftar isi agar senada dengan desain */
+.intro-list {
+    list-style: none; /* Menghilangkan bullet point default */
+    padding: 0;
+    margin: 1rem 0 2.5rem 0; /* Memberikan margin atas/bawah */
+    border: 1px solid var(--border); 
+    border-radius: 12px; 
+    overflow: hidden; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04); 
+}
+
+.intro-list li {
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border); 
+    transition: var(--transition-subtle);
+}
+
+.intro-list li:last-child {
+    border-bottom: none; 
+}
+
+.intro-list li a {
+    text-decoration: none;
+    color: var(--text-dark); /* Menggunakan warna teks gelap */
+    font-weight: 500;
+    display: block; /* Membuat area klik lebih besar */
+    transition: color 0.2s ease;
+}
+
+.intro-list li a:hover {
+    color: var(--primary); /* Hover menggunakan warna primary */
+}
+
+.intro-list li:hover {
+    background-color: var(--bg-light); /* Efek hover ringan */
+}
+
+/* === FOOTER === */
+footer {
+    background: var(--bg-primary);
+    color: #e2e8f0;
+    text-align: center;
+    padding: 3rem 0;
+    margin-top: 4rem;
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--gradient-1);
+}
+
+footer p {
+    margin: 0;
+    color: #cbd5e1;
+    font-size: 0.95rem;
+}
+
+/* ==========================================================
+   === SCROLL ANIMATIONS (INTERSECTION OBSERVER PREP) ===
+   ========================================================== */
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px); 
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    /* Secara default elemen disembunyikan dan diposisikan sedikit ke bawah */
+    opacity: 0; 
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translateY(30px);
+}
+
+.fade-in.animate {
+    /* Ketika kelas .animate ditambahkan oleh main.js, animasi terpicu */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+    
+    .trio-column-container,
+    .gs-card-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem 0;
+    }
+
+    .navbar .container {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+
+    .logo {
+        font-size: 1.8rem;
+    }
+
+    .navbar nav ul {
+        gap: 0.3rem;
+    }
+
+    .navbar nav a {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .content-section {
+        padding: 2.5rem 0;
+    }
+    
+    .intro-paragraph {
+        text-align: left;
+    }
+
+    p {
+        text-align: left;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .navbar nav a {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.85rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Media Query untuk Print (pencetakan) */
+@media print {
+    body {
+        background: white;
+    }
+    
+    .navbar {
+        position: static;
+        background: white;
+        color: black;
+        box-shadow: none;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .navbar nav a {
+        color: var(--text-dark) !important;
+        background: none !important;
+    }
+
+    .content-section {
+        page-break-inside: avoid;
+        background: none !important;
+        backdrop-filter: none !important;
+        animation: none;
+        padding: 2rem 0;
+    }
+
+    .hero-image-placeholder {
+        box-shadow: none;
+        border: 1px solid var(--border);
+    }
+
+    .trio-card,
+    .gs-card.minimal {
+        box-shadow: none;
+        border: 1px solid var(--border);
+    }
+
+    h1, h2, h3, h4 {
+        -webkit-text-fill-color: var(--text-dark) !important;
+        background: none !important;
+        font-family: sans-serif !important;
+    }
+}
