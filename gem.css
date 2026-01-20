@@ -107,18 +107,24 @@ h1 {
     color: var(--text-dark);
 }
 
+/* ========== LOGO DENGAN KOTAK (NEOBRUTALISM STYLE) ========== */
 .hero-image-placeholder {
-    max-width: 500px;
+    max-width: 500px;         /* Tetap sesuai ukuran aslimu */
     margin: 2rem 0;
-    background: #fff;
-    border: var(--border-thick);
-    box-shadow: 12px 12px 0px var(--text-dark);
-    border-radius: 0;
+    background: #fff;        /* Kotak Putih kesukaanmu tetap ada */
+    border: var(--border-thick); /* Border tebal tetap ada */
+    box-shadow: 12px 12px 0px var(--text-dark); /* Bayangan tetap ada */
+    overflow: hidden;        /* Penting: Biar gambar yang di-zoom gak keluar kotak */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .hero-image-placeholder img {
     width: 100%;
     display: block;
+    transform: scale(1.4);    /* INI REVISINYA: Zoom logonya di dalam kotak */
+    transition: 0.3s;
 }
 
 .intro-paragraph {
@@ -129,7 +135,7 @@ h1 {
 
 /* ========== CONTENT CARDS (WHITE/SOFT BLUE) ========== */
 .content-section {
-    padding: 80px 0;
+    padding: 100px 0; /* REVISI: Spasi antar section ditambah */
 }
 
 h2 {
@@ -154,6 +160,7 @@ h2 {
     padding: 30px;
     border-radius: 0px;
     transition: 0.2s;
+    margin-bottom: 40px; /* REVISI: Spasi antar kotak ditambah biar tidak mepet */
 }
 
 /* Variasi warna kartu muda ala lab */
@@ -201,14 +208,15 @@ h2 {
 }
 
 /* ========== VIDEO & GS CARDS ========== */
+/* REVISI: KOTAK YOUTUBE PERSEGI PANJANG */
 .video-container {
     border: var(--border-thick);
-    box-shadow: 0 20px 60px var(--text-dark);
+    box-shadow: 15px 15px 0px var(--text-dark);
     border-radius: 0;
-    padding-bottom: 56.25%;
+    padding-bottom: 40%; /* Lebih pendek/persegi panjang */
     background: #000;
     width: 100%;
-    max-width: 1000px;
+    max-width: 800px; /* Dikecilkan sedikit lebarnya */
     margin: 0 auto;
     overflow: hidden;
     position: relative;
@@ -229,8 +237,7 @@ h2 {
     color: var(--text-dark);
 }
 
-/* ========== TIMELINE ========== */
-/* ========== CLEAN MEDICAL STEPPER ========== */
+/* ========== TIMELINE (CLEAN MEDICAL STEPPER) ========== */
 .video-summary h4 {
     margin-bottom: 2rem;
     text-align: center;
@@ -241,14 +248,13 @@ h2 {
 .timeline-grid {
     display: flex;
     flex-direction: column;
-    gap: 0; /* Menghilangkan jarak antar box agar garis menyambung */
+    gap: 0; 
     max-width: 800px;
     margin: 0 auto;
     position: relative;
     padding-left: 20px;
 }
 
-/* Garis vertikal di samping */
 .timeline-grid::before {
     content: '';
     position: absolute;
@@ -256,23 +262,22 @@ h2 {
     top: 0;
     bottom: 0;
     width: 4px;
-    background: var(--primary); /* Garis warna Teal */
+    background: var(--primary); 
     border: 2px solid var(--text-dark);
 }
 
 .timeline-item {
-    background: transparent; /* Menghilangkan background kotak */
+    background: transparent; 
     border: none;
     box-shadow: none;
     padding: 0 0 30px 40px;
     position: relative;
 }
 
-/* Bulatan (Node) pada garis */
 .timeline-item::before {
     content: '';
     position: absolute;
-    left: -12px; /* Menyesuaikan posisi di tengah garis */
+    left: -12px; 
     top: 5px;
     width: 20px;
     height: 20px;
@@ -292,7 +297,7 @@ h2 {
     color: var(--secondary);
     font-size: 0.8rem;
     padding: 2px 10px;
-    border-radius: 20px; /* Lonjong seperti kapsul */
+    border-radius: 20px; 
     border: 2px solid var(--text-dark);
 }
 
@@ -303,11 +308,13 @@ h2 {
     color: var(--text-dark);
 }
 
-.timeline-item p {
-    color: #555;
-    font-size: 0.95rem;
-    border-bottom: 1px dashed #ccc; /* Garis pemisah halus antar poin */
-    padding-bottom: 15px;
+/* REVISI: MERATAKAN UKURAN TEKS KESIMPULAN/MIKROBA */
+.timeline-item p, .gs-card p, .content-section p {
+    font-size: 1rem !important; /* Paksa semua teks isi berukuran sama */
+    line-height: 1.6;
+    text-align: left;
+    margin: 10px 0;
+    font-weight: 500;
 }
 
 .timeline-item:last-child p {
@@ -335,9 +342,27 @@ footer {
     transform: translateY(0);
 }
 
-/* ========== RESPONSIVE ========== */
+/* ========== REVISI: NAVBAR RESPONSIVE SCROLLABLE ========== */
 @media (max-width: 768px) {
-    h1 { font-size: 2.5rem; }
-    h2 { font-size: 2rem; }
-    .trio-column-container { grid-template-columns: 1fr; }
+    .navbar .container {
+        flex-direction: row; 
+        justify-content: space-between;
+        padding: 0 1rem;
+    }
+
+    .navbar nav ul {
+        display: flex;
+        overflow-x: auto; /* Menu bisa di-scroll ke samping */
+        white-space: nowrap; 
+        gap: 15px;
+        padding-bottom: 5px;
+        -webkit-overflow-scrolling: touch; 
+    }
+
+    .navbar nav ul::-webkit-scrollbar {
+        display: none; 
+    }
+
+    h1 { font-size: 2.2rem !important; }
+    h2 { font-size: 1.8rem !important; margin-bottom: 1.5rem; }
 }
