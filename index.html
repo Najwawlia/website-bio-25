@@ -3,9 +3,627 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website-Bio</title>
-    <link rel="stylesheet" href="claudy.css">
+    <title>BioGizi - Genetika & Biomol Pangan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+/* ==========================================================
+   BioGizi UI - Enhanced & Animated Version
+   ========================================================== */
+
+:root {
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+    --secondary: #ec4899;
+    --accent: #14b8a6;
+    --success: #10b981;
+    --text-dark: #1e293b;
+    --text-gray: #64748b;
+    --bg-card: #ffffff;
+    --bg-light: #f8fafc;
+    --border: #e2e8f0;
+    --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    line-height: 1.85;
+    color: var(--text-dark);
+    background: #ffffff;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 1.4rem;
+}
+
+/* ========== NAVBAR ========== */
+.navbar {
+    position: sticky;
+    top: 0;
+    background: rgba(15,23,42,0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    z-index: 1000;
+    animation: slideDown 0.6s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+}
+
+.logo {
+    font-family: Poppins, sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.navbar nav ul {
+    display: flex;
+    gap: 0.8rem;
+    list-style: none;
+}
+
+.navbar nav a {
+    color: #e5e7eb;
+    font-size: 0.95rem;
+    padding: 0.4rem 0.7rem;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.navbar nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.navbar nav a:hover::after {
+    width: 80%;
+}
+
+.navbar nav a.active-link {
+    background: var(--gradient-1);
+    color: #ffffff;
+}
+
+/* ========== PROGRESS BAR ========== */
+.progress-bar {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    height: 3px;
+    background: var(--gradient-1);
+    width: 0%;
+    z-index: 999;
+    transition: width 0.1s ease;
+}
+
+/* ========== HERO IMAGE ========== */
+.hero-image-placeholder {
+    margin: 2.5rem 0;
+    width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3);
+    animation: floatAnimation 6s ease-in-out infinite;
+}
+
+@keyframes floatAnimation {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.hero-image-placeholder img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 16/9;
+    transition: transform 0.5s ease;
+}
+
+.hero-image-placeholder:hover img {
+    transform: scale(1.05);
+}
+
+/* ========== VIDEO CONTAINER ========== */
+.video-container {
+    margin: 2.5rem 0;
+    width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3);
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* ========== VIDEO SUMMARY ========== */
+.video-summary {
+    margin: 3rem 0;
+    padding: 2.5rem;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.03) 0%, rgba(236, 72, 153, 0.03) 100%);
+    border: 2px solid var(--border);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.video-summary h4 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    color: var(--primary);
+}
+
+.timeline-grid {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.timeline-item {
+    padding: 1.2rem;
+    background: white;
+    border-left: 4px solid var(--primary);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover {
+    transform: translateX(8px);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.15);
+}
+
+.time-badge {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    background: var(--gradient-1);
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 20px;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-item strong {
+    display: block;
+    font-size: 1.05rem;
+    color: var(--text-dark);
+    margin: 0.5rem 0 0.3rem 0;
+}
+
+.timeline-item p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text-gray);
+    line-height: 1.6;
+}
+
+.video-conclusion {
+    padding: 1.5rem;
+    background: white;
+    border-radius: 12px;
+    border: 2px solid var(--accent);
+}
+
+.video-conclusion h4 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--accent);
+}
+
+.video-conclusion p {
+    margin-bottom: 0.8rem;
+    color: var(--text-gray);
+}
+
+.video-conclusion p:last-child {
+    margin-bottom: 0;
+}
+
+.video-conclusion strong {
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+/* ========== FADE IN ANIMATIONS ========== */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade-in.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ========== SECTIONS ========== */
+.content-section {
+    padding: 4.5rem 0;
+}
+
+/* ========== TYPOGRAPHY ========== */
+h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 1.15;
+    text-align: left;
+    margin-bottom: 2rem;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: slideInLeft 0.8s ease-out;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: var(--gradient-1);
+    border-radius: 2px;
+}
+
+h3 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.6rem;
+}
+
+p {
+    margin-bottom: 1.4rem;
+    text-align: left;
+}
+
+/* ========== INTRO PARAGRAPH ========== */
+.intro-paragraph {
+    margin: 2.5rem 0 3rem 0;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(236, 72, 153, 0.05) 100%);
+    border-left: 5px solid var(--primary);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.intro-paragraph:hover {
+    transform: translateX(5px);
+    box-shadow: 0 8px 30px rgba(99, 102, 241, 0.15);
+}
+
+/* ========== TRIO CARDS ========== */
+.trio-column-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin: 3rem 0 1rem 0;
+}
+
+.trio-card {
+    padding: 2rem;
+    border: 2px solid var(--border);
+    border-radius: 20px;
+    background: white;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.trio-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-1);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.trio-card:hover::before {
+    transform: scaleX(1);
+}
+
+.trio-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary);
+    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+}
+
+.trio-card h3 {
+    margin-top: 0;
+    transition: color 0.3s ease;
+}
+
+.trio-card:hover h3 {
+    color: var(--primary-dark);
+}
+
+.trio-card .material-icons {
+    font-size: 3rem;
+    margin-bottom: 0.8rem;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: transform 0.4s ease;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.trio-card:hover .material-icons {
+    transform: scale(1.2) rotate(5deg);
+    animation: none;
+}
+
+.trio-link {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 0.8rem;
+    font-size: 0.9rem;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.trio-link:hover {
+    transform: translateX(5px);
+    color: var(--primary-dark);
+}
+
+/* ========== GS CARDS ========== */
+.gs-card-container {
+    margin: 2.5rem 0;
+    display: grid;
+    gap: 1.5rem;
+}
+
+.gs-card.minimal {
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.03) 0%, rgba(236, 72, 153, 0.03) 100%);
+    border: 2px solid var(--border);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.gs-card.minimal:hover {
+    border-color: var(--primary);
+    transform: translateX(10px);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.1);
+}
+
+.gs-card h4 {
+    color: var(--primary);
+    margin-top: 0;
+}
+
+/* ========== LISTS ========== */
+ul, ol {
+    margin: 1.5rem 0;
+    padding-left: 2rem;
+}
+
+li {
+    margin-bottom: 1rem;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+li:hover {
+    transform: translateX(5px);
+}
+
+ul li::marker {
+    color: var(--primary);
+}
+
+.intro-list {
+    margin: 2.5rem 0 4rem 0;
+}
+
+.intro-list a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.intro-list a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* ========== FOOTER ========== */
+footer {
+    margin-top: 5rem;
+    padding: 3rem 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+    .container { 
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+    
+    h1 { 
+        font-size: 2rem;
+    }
+    
+    h2 { 
+        font-size: 1.6rem;
+    }
+    
+    .trio-column-container { 
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .navbar nav ul { 
+        gap: 0.3rem;
+    }
+
+    .navbar nav a {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.4rem;
+    }
+
+    .hero-image-placeholder {
+        margin: 1.5rem 0;
+        border-radius: 12px;
+    }
+
+    .hero-image-placeholder img {
+        aspect-ratio: 4/3;
+    }
+
+    .video-container {
+        margin: 1.5rem 0;
+        border-radius: 12px;
+    }
+
+    .video-summary {
+        padding: 1.5rem;
+        margin: 2rem 0;
+    }
+
+    .timeline-item {
+        padding: 1rem;
+    }
+
+    .video-conclusion {
+        padding: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    .intro-paragraph {
+        padding: 1.5rem;
+    }
+
+    .trio-card {
+        padding: 1.5rem;
+    }
+}
+    </style>
 </head>
 <body>
     <div class="progress-bar" id="progressBar"></div>
@@ -16,7 +634,11 @@
             <nav>
                 <ul>
                     <li><a href="#beranda">Beranda</a></li>
-                    <li><a href="#layanan">Layanan</a></li>
+                    <li><a href="#video-materi">Video</a></li>
+                    <li><a href="#hered-definisi">Hereditas</a></li>
+                    <li><a href="#biomol-definisi">Biomolekuler</a></li>
+                    <li><a href="#mikroba-definisi">Mikroba</a></li>
+                    <li><a href="#dafpus">Pustaka</a></li>
                 </ul>
             </nav>
         </div>
@@ -35,19 +657,20 @@
                     Materi disusun oleh mahasiswa S1 Teknologi Pangan Universitas Muhammadiyah Semarang.
                 </p>
 
-                <h3 class="fade-in">Daftar Isi Utama</h3>
+                <h3 class="fade-in">Daftar Isi Materi</h3>
                 <ul class="intro-list fade-in" style="transition-delay: 0.3s;">
-                    <li><a href="#video-materi">1. Video Pembelajaran: Keajaiban Sel</a></li>
-                    <li><a href="#hered-definisi">2. Konsep Hereditas (Kelompok 2)</a></li>
-                    <li><a href="#biomol-definisi">3. Biologi Molekuler (Kelompok 4)</a></li>
-                    <li><a href="#dafpus">4. Daftar Pustaka</a></li>
+                    <li><a href="#video-materi">📹 Video Pembelajaran: Keajaiban Sel</a></li>
+                    <li><a href="#hered-definisi">🧬 Konsep Hereditas (Kelompok 2)</a></li>
+                    <li><a href="#biomol-definisi">🔬 Biologi Molekuler (Kelompok 4)</a></li>
+                    <li><a href="#mikroba-definisi">🦠 Peran Mikroba dalam Pengembangan Pangan</a></li>
+                    <li><a href="#dafpus">📚 Daftar Pustaka</a></li>
                 </ul>
             </div>
         </section>
 
         <section id="video-materi" class="content-section">
             <div class="container">
-                <h2 class="fade-in">1. Video Pembelajaran: Keajaiban Sel</h2>
+                <h2 class="fade-in">📹 Video Pembelajaran: Keajaiban Sel</h2>
                 <div class="video-container fade-in">
                     <iframe src="https://www.youtube.com/embed/Hs9TP21yyXM" title="Keajaiban Alam Sel" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
@@ -131,10 +754,10 @@
                     </div>
                     
                     <div class="trio-card fade-in" style="transition-delay: 0.2s;">
-                        <span class="material-icons">menu_book</span>
-                        <h3>Daftar Pustaka</h3>
-                        <p>Melihat daftar pustaka yang menjadi referensi materi ini.</p>
-                        <a href="#dafpus" class="trio-link">Lihat daftar →</a>
+                        <span class="material-icons">biotech</span>
+                        <h3>Peran Mikroba</h3>
+                        <p>Memahami kontribusi mikroorganisme dalam pengembangan dan keamanan produk pangan melalui fermentasi dan bioteknologi.</p>
+                        <a href="#mikroba-definisi" class="trio-link">Pelajari Lebih Lanjut →</a>
                     </div>
                 </div>
             </div>
@@ -142,8 +765,8 @@
         
         <section id="hered-definisi" class="content-section">
             <div class="container">
-                <h2 class="fade-in">2. Konsep Hereditas (Pewarisan Sifat)</h2>
-                <p class="fade-in"><em>Materi di Kutip dari Kelompok 2 Teknologi Pangan A</em></p>
+                <h2 class="fade-in">🧬 Konsep Hereditas (Pewarisan Sifat)</h2>
+                <p class="fade-in"><em>Materi dikutip dari Kelompok 2 Teknologi Pangan A</em></p>
                 
                 <h3 class="fade-in">Pendahuluan Konsep Hereditas</h3>
                 <p class="fade-in">
@@ -194,8 +817,8 @@
 
         <section id="biomol-definisi" class="content-section">
             <div class="container">
-                <h2 class="fade-in">3. Biologi Molekuler dan Aplikasinya</h2>
-                <p class="fade-in"><em>Materi di Kutip dari Kelompok 4 Teknologi Pangan A</em></p>
+                <h2 class="fade-in">🔬 Biologi Molekuler dan Aplikasinya</h2>
+                <p class="fade-in"><em>Materi dikutip dari Kelompok 4 Teknologi Pangan A</em></p>
                 
                 <h3 class="fade-in">2.1 Definisi Biologi Molekuler & Dogma Sentral</h3>
                 <p class="fade-in">
@@ -221,14 +844,106 @@
             </div>
         </section>
         
+        <section id="mikroba-definisi" class="content-section">
+            <div class="container">
+                <h2 class="fade-in">🦠 Peran Mikroba dalam Pengembangan Pangan</h2>
+                <p class="fade-in"><em>Oleh: Deva Arvira Meitya - Program Studi Teknologi Pangan, Universitas Muhammadiyah Semarang</em></p>
+                
+                <h3 class="fade-in">4.1 Pendahuluan</h3>
+                <p class="fade-in">
+                    Pangan merupakan kebutuhan dasar manusia yang memiliki peran krusial dalam menunjang keberlangsungan hidup serta kualitas kesehatan masyarakat. Seiring bertambahnya jumlah penduduk dan meningkatnya kesadaran akan pentingnya konsumsi pangan yang aman, bergizi, dan bermutu, pengembangan teknologi pangan menjadi hal yang tidak terelakkan.
+                </p>
+                <p class="fade-in">
+                    Mikroorganisme telah digunakan dalam pengolahan pangan, khususnya melalui proses fermentasi. Beragam produk pangan seperti tempe, yogurt, keju, roti, dan kecap dihasilkan dari aktivitas mikroba yang mampu mengubah bahan pangan menjadi produk dengan cita rasa, tekstur, dan daya simpan yang lebih baik.
+                </p>
+
+                <h3 class="fade-in">4.2 Pengertian Mikroba</h3>
+                <p class="fade-in">
+                    Mikroorganisme atau mikroba adalah makhluk hidup berukuran sangat kecil dengan diameter kurang dari 0,1 mm, sehingga hanya dapat dilihat melalui bantuan mikroskop. Berdasarkan struktur tubuhnya, mikroorganisme ada yang bersifat uniseluler (tersusun atas satu sel) maupun multiseluler (tersusun atas lebih dari satu sel). Kelompok organisme yang termasuk mikroorganisme meliputi bakteri, archaea, fungi, protozoa, alga mikroskopis (mikroalga), serta virus.
+                </p>
+
+                <h4 class="fade-in">Peran Mikroba dalam Sistem Pangan</h4>
+                <div class="gs-card-container fade-in">
+                    <div class="gs-card minimal fade-in">
+                        <h4>1. Keamanan Pangan</h4>
+                        <p>Mikrobiologi pangan menjamin keamanan makanan yang dikonsumsi manusia melalui pengendalian dan identifikasi mikroorganisme patogen maupun penghasil toksin yang berpotensi menimbulkan penyakit.</p>
+                    </div>
+                    <div class="gs-card minimal fade-in" style="transition-delay: 0.1s;">
+                        <h4>2. Kualitas dan Stabilitas Produk</h4>
+                        <p>Mengendalikan keberadaan mikroorganisme yang dapat memengaruhi mutu dan daya simpan produk pangan, termasuk pengendalian mikroba penyebab pembusukan.</p>
+                    </div>
+                    <div class="gs-card minimal fade-in" style="transition-delay: 0.2s;">
+                        <h4>3. Pengembangan Probiotik</h4>
+                        <p>Pengembangan produk probiotik dan prebiotik yang mengandung mikroorganisme menguntungkan bagi kesehatan dan keseimbangan mikrobiota usus.</p>
+                    </div>
+                    <div class="gs-card minimal fade-in" style="transition-delay: 0.3s;">
+                        <h4>4. Inovasi Produk Pangan</h4>
+                        <p>Ilmu mikrobiologi pangan dimanfaatkan untuk menciptakan dan mengembangkan produk pangan baru yang berkualitas.</p>
+                    </div>
+                    <div class="gs-card minimal fade-in" style="transition-delay: 0.4s;">
+                        <h4>5. Pemantauan dan Regulasi</h4>
+                        <p>Mendukung kegiatan pengawasan dan pengaturan dalam industri pangan untuk memastikan produk memenuhi standar keamanan dan mutu.</p>
+                    </div>
+                </div>
+
+                <h3 class="fade-in">4.3 Jenis Mikroba dalam Pengembangan Pangan</h3>
+                
+                <h4 class="fade-in">A. Mikroorganisme pada Pangan Olahan Bersuhu Tinggi</h4>
+                <p class="fade-in">
+                    Pada pangan yang diolah dengan suhu tinggi, terdapat mikroorganisme tertentu yang mampu bertahan. Bakteri dalam bentuk vegetatif seperti <em>Bacillus subtilis</em>, <em>Campylobacter jejuni</em>, <em>Clostridium sporogenes</em>, <em>Escherichia coli</em> O157:H8, dan <em>Salmonella senftenberg</em>, serta bakteri pembentuk spora seperti <em>Clostridium botulinum</em> dan <em>Bacillus cereus</em>. Keberadaan mikroba ini berkaitan dengan proses pengolahan dan berpengaruh terhadap upaya memperpanjang masa simpan produk pangan.
+                </p>
+
+                <h4 class="fade-in">B. Mikroorganisme pada Pangan Olahan Beku</h4>
+                <p class="fade-in">
+                    Produk pangan beku umumnya dipengaruhi oleh bakteri Gram negatif, antara lain <em>Pseudomonas spp.</em>, <em>Aeromonas spp.</em>, <em>Acinetobacter spp.</em>, dan <em>Flavobacterium spp.</em> Mikroorganisme ini berperan dalam mempertahankan sifat sensorik dan kandungan gizi pangan, sekaligus memperlambat pertumbuhan mikroba penyebab kerusakan.
+                </p>
+
+                <h4 class="fade-in">C. Mikroorganisme pada Pangan Olahan Fermentasi</h4>
+                <p class="fade-in">
+                    Dalam proses fermentasi, bakteri seperti <em>Lactobacillus</em>, <em>Zymomonas</em>, dan <em>Clostridium</em> memiliki peran utama. Mikroorganisme tersebut mengubah bahan organik menjadi produk bernilai tambah, seperti asam laktat dan alkohol, serta menghasilkan berbagai pangan fermentasi, misalnya tempe dan cider.
+                </p>
+
+                <h3 class="fade-in">4.4 Peran Mikroorganisme: Menguntungkan dan Merugikan</h3>
+                
+                <h4 class="fade-in">Menguntungkan</h4>
+                <ul class="fade-in">
+                    <li>Memberikan keuntungan dalam pemanfaatan berbagai produk fermentasi seperti tempe, oncom, tape, tauco, yogurt, nata, kecap, dan berbagai produk lainnya.</li>
+                    <li>Berperan dalam menghasilkan metabolit penting seperti asam amino, enzim, antibiotik, asam organik, dan senyawa bermanfaat lainnya.</li>
+                </ul>
+
+                <h4 class="fade-in">Merugikan</h4>
+                <ul class="fade-in">
+                    <li>Menyebabkan kerusakan pada makanan yang ditandai dengan tekstur menjadi berair atau berlendir, munculnya bau tidak sedap, perubahan rasa menjadi asam, pertumbuhan jamur, serta perubahan warna.</li>
+                    <li>Mikroorganisme tertentu dapat menjadi penyebab berbagai penyakit seperti disentri, tifus, tuberkulosis (TBC), kolera, antraks, dan penyakit lainnya.</li>
+                </ul>
+
+                <h3 class="fade-in">4.5 Kesimpulan</h3>
+                <p class="intro-paragraph fade-in">
+                    Mikroorganisme memegang peranan yang sangat signifikan dalam pengembangan pangan, baik melalui kegiatan fermentasi maupun penerapan bioteknologi. Keberadaan mikroba tidak hanya berfungsi untuk meningkatkan keamanan serta mutu produk pangan, tetapi juga berkontribusi dalam menghasilkan makanan bergizi yang mendukung kesehatan masyarakat. Berbagai jenis mikroorganisme yang terlibat dalam pengolahan pangan, seperti bakteri, jamur, dan mikroalga, mampu menghasilkan produk bernilai tambah, antara lain yogurt, tempe, serta beragam hasil fermentasi lainnya.
+                </p>
+            </div>
+        </section>
+        
         <section id="dafpus" class="content-section">
             <div class="container">
-                <h2 class="fade-in">4. Daftar Pustaka</h2>
+                <h2 class="fade-in">📚 Daftar Pustaka</h2>
+                
+                <h3 class="fade-in">Referensi Hereditas dan Biologi Molekuler</h3>
                 <ol class="fade-in">
-                    <li>Griffiths, A. J. F., et al. (2015). An Introduction to Genetic Analysis. W. H. Freeman and Company.</li>
-                    <li>Klug, W. S., et al. (2018). Concepts of Genetics. Pearson Education.</li>
-                    <li>Farrell, H. M., et al. (2004). Journal of Dairy Science.</li>
-                    <li>Sleper, D. A., & Poehlman, J. M. (2006). Breeding Field Crops. Blackwell Publishing.</li>
+                    <li>Griffiths, A. J. F., et al. (2015). <em>An Introduction to Genetic Analysis</em>. W. H. Freeman and Company.</li>
+                    <li>Klug, W. S., et al. (2018). <em>Concepts of Genetics</em>. Pearson Education.</li>
+                    <li>Farrell, H. M., et al. (2004). <em>Journal of Dairy Science</em>.</li>
+                    <li>Sleper, D. A., & Poehlman, J. M. (2006). <em>Breeding Field Crops</em>. Blackwell Publishing.</li>
+                </ol>
+
+                <h3 class="fade-in">Referensi Peran Mikroba dalam Pangan</h3>
+                <ol class="fade-in" start="5">
+                    <li>Abdul Farid, Ugik Romadi, & Djoko Witono. (2018). Faktor-Faktor yang Mempengaruhi Adopsi Petani dalam Penerapan Sistem Tanam Jajar Legowo di Desa Sukosari Kecamatan Kasembon Kabupaten Malang Provinsi Jawa Timur. <em>Jurnal Penyuluhan</em>, 14(1), 27–32.</li>
+                    <li>Arna, Y. D., Bataragoa, E., Purnamasari, Y., Suwarja, Dewi, A. P., Aliyah, S. H., Astuti, R. A. W., & Maulina, N. T. A. (2025). <em>Bioteknologi Mikrobia</em> (1st ed.). PT Media Pustaka Indo.</li>
+                    <li>Azara, R., & Saidi, I. A. (2020). <em>Mikrobiologi Pangan</em> (1st ed.). UMSDIA Press.</li>
+                    <li>Ciputra, U. (2025). <em>Mengenal Mikrobiologi Pangan – Pentingnya Memahami Peran Mikroorganisme dalam Industri Pangan</em>. Universitas Ciputra. https://www.ciputra.ac.id/ftp/mengenal-mikrobiologi-pangan-pentingnya-memahami-peran-mikroorganisme-dalam-industri-pangan/</li>
+                    <li>Nurhayati, E., Salim, M., Syari, J. P., & Irine, R. (2022). Cemaran Mikroba pada Suhu Dingin dalam Kulkas Rumah Tangga. <em>Jurnal Vokasi Kesehatan</em>, 8(1), 59–63. http://ejournal.poltekkes-pontianak.ac.id/index.php/JVK</li>
+                    <li>Yuniastri, R., & Putri, I. R. D. (2018). Mikroorganisme dalam Pangan. <em>CEMARA</em>, 15(2), 15–20. https://doi.org/10.32662/insancita.v2i2.1138</li>
                 </ol>
             </div>
         </section>
@@ -241,7 +956,127 @@
         </div>
     </footer>
 
-    <script src="main.js"></script>
+    <script>
+/* ==========================================================
+ * BioGizi - Enhanced JavaScript
+ * 1. Scroll Animation (Fade In)
+ * 2. Active Link Navbar
+ * 3. Progress Bar
+ * 4. Smooth Scroll
+ * ========================================================== */
+
+// 1. FUNGSI UNTUK MENGATUR ANIMASI SCROLL (FADE IN)
+function setupScrollAnimation() {
+    const fadeElements = document.querySelectorAll('.fade-in');
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    fadeElements.forEach(element => {
+        observer.observe(element);
+    });
+}
+
+// 2. FUNGSI UNTUK MENGATUR NAVIGASI AKTIF
+function setupActiveNavbar() {
+    const sections = document.querySelectorAll('.content-section');
+    const navLinks = document.querySelectorAll('.navbar nav a');
+    
+    const options = {
+        root: null,
+        rootMargin: '-50% 0px -50% 0px',
+        threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navLinks.forEach(link => link.classList.remove('active-link'));
+                
+                const currentId = entry.target.getAttribute('id');
+                const activeLink = document.querySelector(`.navbar nav a[href="#${currentId}"]`);
+                
+                if (activeLink) {
+                    activeLink.classList.add('active-link');
+                }
+            }
+        });
+    }, options);
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+}
+
+// 3. FUNGSI PROGRESS BAR
+function setupProgressBar() {
+    const progressBar = document.getElementById('progressBar');
+    
+    window.addEventListener('scroll', () => {
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight - windowHeight;
+        const scrolled = window.scrollY;
+        const progress = (scrolled / documentHeight) * 100;
+        
+        progressBar.style.width = progress + '%';
+    });
+}
+
+// 4. SMOOTH SCROLL UNTUK SEMUA LINK
+function setupSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                const targetPosition = targetElement.offsetTop - navbarHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+// 5. JALANKAN SEMUA FUNGSI SAAT DOKUMEN SIAP
+document.addEventListener('DOMContentLoaded', () => {
+    setupScrollAnimation();
+    setupActiveNavbar();
+    setupProgressBar();
+    setupSmoothScroll();
+    
+    // Animasi awal untuk elemen yang sudah terlihat
+    setTimeout(() => {
+        const visibleElements = document.querySelectorAll('.fade-in');
+        visibleElements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                el.classList.add('animate');
+            }
+        });
+    }, 100);
+});
+    </script>
 
 </body>
 </html>
