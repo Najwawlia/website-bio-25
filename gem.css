@@ -1,12 +1,13 @@
 /* ==========================================================
-   BioGizi UI - Medical Neobrutalism (Full Fixed Version)
+   BIOGIZI CSS - THE COMPLETE ULTIMATE VERSION
+   Semua fitur: Progress Bar, Icons, Cards, Stepper, & Fixes
    ========================================================== */
 
 :root {
-    --primary: #00A896;    /* Teal Medis */
-    --secondary: #E0F2F1;  /* Mint Muda */
-    --accent: #F0F4F8;     /* Biru Abu-abu Pucat */
-    --text-dark: #1A374D;  /* Deep Navy */
+    --primary: #00A896;    
+    --secondary: #E0F2F1;  
+    --accent: #F0F4F8;     
+    --text-dark: #1A374D;  
     --border-thick: 4px solid var(--text-dark);
     --neo-shadow: 8px 8px 0px var(--text-dark);
     --neo-shadow-sm: 4px 4px 0px var(--text-dark);
@@ -33,7 +34,18 @@ body {
     padding: 0 1.5rem;
 }
 
-/* ========== NAVBAR (Tetap Kokoh & Scrollable di HP) ========== */
+/* ========== PROGRESS BAR (YANG TADI SEMPAT HILANG) ========== */
+.progress-bar {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    height: 8px;
+    background: var(--primary);
+    border-right: var(--border-thick);
+    z-index: 999;
+}
+
+/* ========== NAVBAR (RESPONSIVE & SCROLLABLE) ========== */
 .navbar {
     position: sticky;
     top: 0;
@@ -80,18 +92,7 @@ body {
     color: #fff;
 }
 
-/* ========== PROGRESS BAR ========== */
-.progress-bar {
-    position: fixed;
-    top: 80px;
-    left: 0;
-    height: 8px;
-    background: var(--primary);
-    border-right: var(--border-thick);
-    z-index: 999;
-}
-
-/* ========== HERO SECTION (LOGO ZOOM DALAM KOTAK) ========== */
+/* ========== HERO SECTION (LOGO DALAM KOTAK PUTIH) ========== */
 #beranda {
     background: var(--secondary); 
     padding: 80px 0;
@@ -100,9 +101,9 @@ body {
 
 h1 {
     font-family: 'Poppins', sans-serif;
-    font-size: 4rem;
+    font-size: 3.5rem;
     font-weight: 900;
-    line-height: 1;
+    line-height: 1.1;
     margin-bottom: 1.5rem;
     color: var(--text-dark);
 }
@@ -110,42 +111,42 @@ h1 {
 .hero-image-placeholder {
     max-width: 500px;
     margin: 2rem 0;
-    background: #fff; /* KOTAK PUTIH TETAP ADA */
-    border: var(--border-thick); /* BORDER TETAP ADA */
-    box-shadow: 12px 12px 0px var(--text-dark); /* SHADOW TETAP ADA */
-    border-radius: 0;
-    overflow: hidden; /* BIAR ZOOM GAK KELUAR KOTAK */
+    background: #fff; /* Kotak Putih Kesukaanmu */
+    border: var(--border-thick);
+    box-shadow: 12px 12px 0px var(--text-dark);
+    overflow: hidden; 
 }
 
 .hero-image-placeholder img {
     width: 100%;
     display: block;
-    transform: scale(1.4); /* ZOOM DI DALAM KOTAK */
+    transform: scale(1.15); /* Zoom pas biar gak pecah */
 }
 
-.intro-paragraph {
-    font-size: 1.5rem;
-    font-weight: 700;
+/* ========== TEXT NORMALIZATION (FIX MIKROBA RAKSASA) ========== */
+p, .timeline-item p, .gs-card p, li, .intro-paragraph {
+    font-size: 1rem !important; 
+    line-height: 1.7;
     color: var(--text-dark);
-}
-
-/* ========== CONTENT CARDS (DENGAN SPASI LEGA) ========== */
-.content-section {
-    padding: 100px 0; /* Spasi antar section diperlebar */
+    margin-bottom: 15px;
 }
 
 h2 {
     font-family: 'Poppins', sans-serif;
-    font-size: 3rem;
+    font-size: 2.8rem;
     font-weight: 900;
     margin-bottom: 2rem;
-    text-transform: capitalize;
     color: var(--text-dark);
+}
+
+/* ========== CONTENT & CARDS ========== */
+.content-section {
+    padding: 100px 0;
 }
 
 .trio-column-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Fleksibel untuk HP */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
 }
 
@@ -154,12 +155,10 @@ h2 {
     border: var(--border-thick);
     box-shadow: var(--neo-shadow);
     padding: 30px;
-    border-radius: 0px;
     transition: 0.2s;
-    margin-bottom: 30px; /* Jarak antar kotak saat di HP */
+    margin-bottom: 20px;
 }
 
-/* Warna Kotak Kesukaanmu */
 .trio-card:nth-child(1) { background-color: #E3F2FD; } 
 .trio-card:nth-child(2) { background-color: #E8F5E9; } 
 .trio-card:nth-child(3) { background-color: #F3E5F5; } 
@@ -172,50 +171,71 @@ h2 {
 .trio-card h3 {
     font-weight: 900;
     font-size: 1.5rem;
-    color: var(--text-dark);
-    margin-top: 10px;
+    margin: 15px 0;
 }
 
-/* ========== MERATAKAN TEKS (FIX MIKROBA) ========== */
-p, .timeline-item p, .gs-card p {
-    font-size: 1rem !important; /* UKURAN RATA SEMUA */
-    line-height: 1.6;
-    text-align: left;
-    margin: 10px 0;
-    color: var(--text-dark);
+/* ICON MATERIAL */
+.trio-card .material-icons {
+    font-size: 3.5rem;
+    color: var(--primary);
 }
 
-/* Judul sub-bab */
-.timeline-item strong {
-    font-size: 1.1rem;
-    display: block;
-    margin-bottom: 5px;
+/* ========== BUTTONS (NEOBRUTALISM STYLE) ========== */
+.trio-link, .btn-main {
+    display: inline-block;
+    background: var(--primary);
+    color: #fff;
+    padding: 10px 20px;
+    border: var(--border-thick);
+    box-shadow: var(--neo-shadow-sm);
+    text-decoration: none;
     font-weight: 800;
+    margin-top: 15px;
+    transition: 0.1s;
 }
 
-/* ========== VIDEO CONTAINER ========== */
+.trio-link:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--text-dark);
+    background: #fff;
+    color: var(--primary);
+}
+
+/* ========== VIDEO & GS CARDS ========== */
 .video-container {
     border: var(--border-thick);
-    box-shadow: 0 20px 60px var(--text-dark);
-    border-radius: 0;
+    box-shadow: 15px 15px 0px var(--text-dark);
     padding-bottom: 56.25%;
     background: #000;
     width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-    overflow: hidden;
+    max-width: 900px;
+    margin: 40px auto;
     position: relative;
     height: 0;
 }
 
-/* ========== TIMELINE STEPPER ========== */
+.video-container iframe {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+}
+
+.gs-card.minimal {
+    background: #fff;
+    border: var(--border-thick);
+    box-shadow: var(--neo-shadow-sm);
+    padding: 25px;
+    border-left: 10px solid var(--primary);
+    margin-bottom: 20px;
+}
+
+/* ========== STEPPER TIMELINE ========== */
 .timeline-grid {
     display: flex;
     flex-direction: column;
     max-width: 800px;
-    margin: 0 auto;
+    margin: 40px auto;
     position: relative;
-    padding-left: 20px;
+    padding-left: 25px;
 }
 
 .timeline-grid::before {
@@ -228,20 +248,33 @@ p, .timeline-item p, .gs-card p {
 }
 
 .timeline-item {
-    background: transparent;
-    padding: 0 0 30px 40px;
+    padding: 0 0 40px 40px;
     position: relative;
 }
 
 .timeline-item::before {
     content: '';
     position: absolute;
-    left: -12px; top: 5px;
-    width: 20px; height: 20px;
+    left: -13px; top: 5px;
+    width: 22px; height: 22px;
     background: var(--primary);
     border: 3px solid var(--text-dark);
     border-radius: 50%;
     z-index: 2;
+}
+
+.time-badge {
+    background: var(--text-dark);
+    color: #fff;
+    font-size: 0.8rem;
+    padding: 3px 12px;
+    border-radius: 20px;
+}
+
+.timeline-item strong {
+    font-size: 1.2rem;
+    display: block;
+    margin-top: 5px;
 }
 
 /* ========== FOOTER ========== */
@@ -249,44 +282,30 @@ footer {
     background: var(--text-dark);
     color: #fff;
     padding: 40px 0;
+    text-align: center;
     border-top: var(--border-thick);
 }
 
-/* ========== RESPONSIVE MOBILE FIX (NAVBAR SCROLL) ========== */
+.footer-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* ========== MOBILE FIX ========== */
 @media (max-width: 768px) {
-    .navbar .container {
-        flex-direction: row; 
-        justify-content: space-between;
-    }
-
     .navbar nav ul {
-        display: flex;
-        overflow-x: auto; /* Bisa digeser samping */
-        white-space: nowrap; 
+        overflow-x: auto;
+        white-space: nowrap;
         gap: 15px;
-        padding-bottom: 5px;
-        -webkit-overflow-scrolling: touch; 
+        padding-bottom: 10px;
+        max-width: 220px;
     }
-
-    .navbar nav ul::-webkit-scrollbar {
-        display: none; 
-    }
-
+    .navbar nav ul::-webkit-scrollbar { display: none; }
+    
     h1 { font-size: 2.2rem !important; }
     h2 { font-size: 1.8rem !important; }
-    
-    .hero-image-placeholder img {
-        transform: scale(1.3); /* Sedikit disesuaikan untuk HP */
-    }
 }
 
-/* ========== ANIMATIONS ========== */
-.fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: 0.5s ease-out;
-}
-.fade-in.animate {
-    opacity: 1;
-    transform: translateY(0);
-}
+/* ANIMASI */
+.fade-in { opacity: 0; transform: translateY(20px); transition: 0.6s; }
+.fade-in.animate { opacity: 1; transform: translateY(0); }
