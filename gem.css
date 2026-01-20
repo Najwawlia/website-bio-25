@@ -1,12 +1,12 @@
 /* ==========================================================
-   BioGizi UI - Medical Neobrutalism (Doctor Vibes)
+   BioGizi UI - Medical Neobrutalism (Full Fixed Version)
    ========================================================== */
 
 :root {
-    --primary: #00A896;    /* Teal Medis (Tombol & Aksen) */
-    --secondary: #E0F2F1;  /* Mint Muda (Hero Section) */
-    --accent: #F0F4F8;     /* Biru Abu-abu Pucat (Background Body) */
-    --text-dark: #1A374D;  /* Deep Navy (Warna Teks & Border) */
+    --primary: #00A896;    /* Teal Medis */
+    --secondary: #E0F2F1;  /* Mint Muda */
+    --accent: #F0F4F8;     /* Biru Abu-abu Pucat */
+    --text-dark: #1A374D;  /* Deep Navy */
     --border-thick: 4px solid var(--text-dark);
     --neo-shadow: 8px 8px 0px var(--text-dark);
     --neo-shadow-sm: 4px 4px 0px var(--text-dark);
@@ -23,7 +23,7 @@ body {
     font-size: 16px;
     line-height: 1.6;
     color: var(--text-dark);
-    background: var(--accent); /* Background warna muda medis */
+    background: var(--accent);
     overflow-x: hidden;
 }
 
@@ -33,7 +33,7 @@ body {
     padding: 0 1.5rem;
 }
 
-/* ========== NAVBAR (Deep Medical Blue) ========== */
+/* ========== NAVBAR (Tetap Kokoh & Scrollable di HP) ========== */
 .navbar {
     position: sticky;
     top: 0;
@@ -91,7 +91,7 @@ body {
     z-index: 999;
 }
 
-/* ========== HERO SECTION (MINT MUDA) ========== */
+/* ========== HERO SECTION (LOGO ZOOM DALAM KOTAK) ========== */
 #beranda {
     background: var(--secondary); 
     padding: 80px 0;
@@ -107,24 +107,20 @@ h1 {
     color: var(--text-dark);
 }
 
-/* ========== LOGO DENGAN KOTAK (NEOBRUTALISM STYLE) ========== */
 .hero-image-placeholder {
-    max-width: 500px;         /* Tetap sesuai ukuran aslimu */
+    max-width: 500px;
     margin: 2rem 0;
-    background: #fff;        /* Kotak Putih kesukaanmu tetap ada */
-    border: var(--border-thick); /* Border tebal tetap ada */
-    box-shadow: 12px 12px 0px var(--text-dark); /* Bayangan tetap ada */
-    overflow: hidden;        /* Penting: Biar gambar yang di-zoom gak keluar kotak */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background: #fff; /* KOTAK PUTIH TETAP ADA */
+    border: var(--border-thick); /* BORDER TETAP ADA */
+    box-shadow: 12px 12px 0px var(--text-dark); /* SHADOW TETAP ADA */
+    border-radius: 0;
+    overflow: hidden; /* BIAR ZOOM GAK KELUAR KOTAK */
 }
 
 .hero-image-placeholder img {
     width: 100%;
     display: block;
-    transform: scale(1.4);    /* INI REVISINYA: Zoom logonya di dalam kotak */
-    transition: 0.3s;
+    transform: scale(1.4); /* ZOOM DI DALAM KOTAK */
 }
 
 .intro-paragraph {
@@ -133,9 +129,9 @@ h1 {
     color: var(--text-dark);
 }
 
-/* ========== CONTENT CARDS (WHITE/SOFT BLUE) ========== */
+/* ========== CONTENT CARDS (DENGAN SPASI LEGA) ========== */
 .content-section {
-    padding: 100px 0; /* REVISI: Spasi antar section ditambah */
+    padding: 100px 0; /* Spasi antar section diperlebar */
 }
 
 h2 {
@@ -149,7 +145,7 @@ h2 {
 
 .trio-column-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Fleksibel untuk HP */
     gap: 2rem;
 }
 
@@ -160,17 +156,17 @@ h2 {
     padding: 30px;
     border-radius: 0px;
     transition: 0.2s;
-    margin-bottom: 40px; /* REVISI: Spasi antar kotak ditambah biar tidak mepet */
+    margin-bottom: 30px; /* Jarak antar kotak saat di HP */
 }
 
-/* Variasi warna kartu muda ala lab */
-.trio-card:nth-child(1) { background-color: #E3F2FD; } /* Soft Blue */
-.trio-card:nth-child(2) { background-color: #E8F5E9; } /* Soft Mint */
-.trio-card:nth-child(3) { background-color: #F3E5F5; } /* Soft Purple */
+/* Warna Kotak Kesukaanmu */
+.trio-card:nth-child(1) { background-color: #E3F2FD; } 
+.trio-card:nth-child(2) { background-color: #E8F5E9; } 
+.trio-card:nth-child(3) { background-color: #F3E5F5; } 
 
 .trio-card:hover {
     transform: translate(-4px, -4px);
-    box-shadow: 12px 12px 0px var(--primary); /* Shadow berubah jadi teal saat hover */
+    box-shadow: 12px 12px 0px var(--primary);
 }
 
 .trio-card h3 {
@@ -180,75 +176,42 @@ h2 {
     margin-top: 10px;
 }
 
-.trio-card .material-icons {
-    font-size: 3.5rem;
-    color: var(--primary);
-    background: none;
+/* ========== MERATAKAN TEKS (FIX MIKROBA) ========== */
+p, .timeline-item p, .gs-card p {
+    font-size: 1rem !important; /* UKURAN RATA SEMUA */
+    line-height: 1.6;
+    text-align: left;
+    margin: 10px 0;
+    color: var(--text-dark);
 }
 
-/* ========== BUTTONS ========== */
-.trio-link, .btn-main {
-    display: inline-block;
-    background: var(--primary);
-    color: #fff;
-    padding: 10px 20px;
-    border: var(--border-thick);
-    box-shadow: var(--neo-shadow-sm);
-    text-decoration: none;
+/* Judul sub-bab */
+.timeline-item strong {
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 5px;
     font-weight: 800;
-    margin-top: 15px;
-    transition: 0.1s;
 }
 
-.trio-link:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0px var(--text-dark);
-    background: #fff;
-    color: var(--primary);
-}
-
-/* ========== VIDEO & GS CARDS ========== */
-/* REVISI: KOTAK YOUTUBE PERSEGI PANJANG */
+/* ========== VIDEO CONTAINER ========== */
 .video-container {
     border: var(--border-thick);
-    box-shadow: 15px 15px 0px var(--text-dark);
+    box-shadow: 0 20px 60px var(--text-dark);
     border-radius: 0;
-    padding-bottom: 40%; /* Lebih pendek/persegi panjang */
+    padding-bottom: 56.25%;
     background: #000;
     width: 100%;
-    max-width: 800px; /* Dikecilkan sedikit lebarnya */
+    max-width: 1000px;
     margin: 0 auto;
     overflow: hidden;
     position: relative;
     height: 0;
 }
 
-.gs-card.minimal {
-    background: #fff;
-    border: var(--border-thick);
-    box-shadow: var(--neo-shadow-sm);
-    border-radius: 0;
-    padding: 20px;
-    border-left: 10px solid var(--primary); /* Aksen garis lab di samping */
-}
-
-.gs-card h4 {
-    font-weight: 900;
-    color: var(--text-dark);
-}
-
-/* ========== TIMELINE (CLEAN MEDICAL STEPPER) ========== */
-.video-summary h4 {
-    margin-bottom: 2rem;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
+/* ========== TIMELINE STEPPER ========== */
 .timeline-grid {
     display: flex;
     flex-direction: column;
-    gap: 0; 
     max-width: 800px;
     margin: 0 auto;
     position: relative;
@@ -258,18 +221,14 @@ h2 {
 .timeline-grid::before {
     content: '';
     position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
+    left: 0; top: 0; bottom: 0;
     width: 4px;
     background: var(--primary); 
     border: 2px solid var(--text-dark);
 }
 
 .timeline-item {
-    background: transparent; 
-    border: none;
-    box-shadow: none;
+    background: transparent;
     padding: 0 0 30px 40px;
     position: relative;
 }
@@ -277,48 +236,12 @@ h2 {
 .timeline-item::before {
     content: '';
     position: absolute;
-    left: -12px; 
-    top: 5px;
-    width: 20px;
-    height: 20px;
+    left: -12px; top: 5px;
+    width: 20px; height: 20px;
     background: var(--primary);
     border: 3px solid var(--text-dark);
     border-radius: 50%;
     z-index: 2;
-}
-
-.timeline-item:hover::before {
-    background: #fff;
-    transform: scale(1.2);
-}
-
-.time-badge {
-    background: var(--text-dark);
-    color: var(--secondary);
-    font-size: 0.8rem;
-    padding: 2px 10px;
-    border-radius: 20px; 
-    border: 2px solid var(--text-dark);
-}
-
-.timeline-item strong {
-    font-size: 1.2rem;
-    display: block;
-    margin-top: 5px;
-    color: var(--text-dark);
-}
-
-/* REVISI: MERATAKAN UKURAN TEKS KESIMPULAN/MIKROBA */
-.timeline-item p, .gs-card p, .content-section p {
-    font-size: 1rem !important; /* Paksa semua teks isi berukuran sama */
-    line-height: 1.6;
-    text-align: left;
-    margin: 10px 0;
-    font-weight: 500;
-}
-
-.timeline-item:last-child p {
-    border-bottom: none;
 }
 
 /* ========== FOOTER ========== */
@@ -327,32 +250,18 @@ footer {
     color: #fff;
     padding: 40px 0;
     border-top: var(--border-thick);
-    text-align: left;
 }
 
-/* ========== ANIMATIONS ========== */
-.fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: 0.5s ease-out;
-}
-
-.fade-in.animate {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* ========== REVISI: NAVBAR RESPONSIVE SCROLLABLE ========== */
+/* ========== RESPONSIVE MOBILE FIX (NAVBAR SCROLL) ========== */
 @media (max-width: 768px) {
     .navbar .container {
         flex-direction: row; 
         justify-content: space-between;
-        padding: 0 1rem;
     }
 
     .navbar nav ul {
         display: flex;
-        overflow-x: auto; /* Menu bisa di-scroll ke samping */
+        overflow-x: auto; /* Bisa digeser samping */
         white-space: nowrap; 
         gap: 15px;
         padding-bottom: 5px;
@@ -364,5 +273,20 @@ footer {
     }
 
     h1 { font-size: 2.2rem !important; }
-    h2 { font-size: 1.8rem !important; margin-bottom: 1.5rem; }
+    h2 { font-size: 1.8rem !important; }
+    
+    .hero-image-placeholder img {
+        transform: scale(1.3); /* Sedikit disesuaikan untuk HP */
+    }
+}
+
+/* ========== ANIMATIONS ========== */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.5s ease-out;
+}
+.fade-in.animate {
+    opacity: 1;
+    transform: translateY(0);
 }
